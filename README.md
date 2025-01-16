@@ -37,13 +37,3 @@ This project is a web-based application that visualizes various sorting algorith
 - **Array Size:** The input field allows values between 3 and 250.
 - **Theme Color:** The color picker allows changing the primary color of the bars.
 
-
-
-
-
-
-
-
-
-
-
