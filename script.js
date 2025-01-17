@@ -180,9 +180,11 @@ document.getElementById('start').addEventListener('click', async () => {
         case 'tim':
             await timSort(array);
             break;
-            default:
-                disable(false);
-                console.log('Invalid algorithm');
+        case 'binary':
+            await binarySort(array);
+            break;
+        default:
+            console.log('Invalid algorithm');
         }
             
     disable(false);
@@ -236,19 +238,18 @@ renderArray(generateRandomArray(arraySize));
 
 
 
-// Bucket Sort
 async function bucketSort() {
     const bars = document.querySelectorAll('.bar');
     const bucketCount = Math.floor(array.length / 2);
     const buckets = Array.from({ length: bucketCount }, () => []);
 
-    // Distribute values into buckets
+
     array.forEach(value => {
         const index = Math.floor((value / 400) * bucketCount);
         buckets[index].push(value);
     });
 
-    // Sort each bucket and concatenate
+
     let index = 0;
     for (const bucket of buckets) {
         bucket.sort((a, b) => a - b);
@@ -391,30 +392,42 @@ async function timSort(array) {
 }
 
 
+async function binarySort(array) {
+    const bars = document.querySelectorAll('.bar');
+
+    function binarySearch(item, low, high) {
+        while (low <= high) {
+            const mid = Math.floor((low + high) / 2);
+            if (parseInt(bars[mid].style.height) === item) {
+                return mid + 1;
+            } else if (parseInt(bars[mid].style.height) < item) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return low;
+    }
+
+    for (let i = 1; i < array.length; i++) {
+        const key = parseInt(bars[i].style.height);
+        let j = i - 1;
+        const loc = binarySearch(key, 0, j);
+
+        while (j >= loc) {
+            bars[j + 1].style.height = bars[j].style.height;
+            swaps++;
+            document.getElementById('swaps').innerText = `Swaps: ${swaps}`;
+            j--;
+            await new Promise(resolve => setTimeout(resolve, delay));
+        }
+        bars[j + 1].style.height = `${key}px`;
+    }
+}
+
+
 const stop = document.getElementById('stop');
 stop.addEventListener('click', () => {
     location.reload();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
