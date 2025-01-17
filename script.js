@@ -238,7 +238,7 @@ renderArray(generateRandomArray(arraySize));
 
 
 
-async function bucketSort() {
+async function bucketSort(array) {
     const bars = document.querySelectorAll('.bar');
     const bucketCount = Math.floor(array.length / 2);
     const buckets = Array.from({ length: bucketCount }, () => []);
@@ -395,7 +395,7 @@ async function timSort(array) {
 async function binarySort(array) {
     const bars = document.querySelectorAll('.bar');
 
-    function binarySearch(item, low, high) {
+    function binarySearch(subArray, item, low, high) {
         while (low <= high) {
             const mid = Math.floor((low + high) / 2);
             if (parseInt(bars[mid].style.height) === item) {
@@ -412,7 +412,7 @@ async function binarySort(array) {
     for (let i = 1; i < array.length; i++) {
         const key = parseInt(bars[i].style.height);
         let j = i - 1;
-        const loc = binarySearch(key, 0, j);
+        const loc = binarySearch(array, key, 0, j);
 
         while (j >= loc) {
             bars[j + 1].style.height = bars[j].style.height;
