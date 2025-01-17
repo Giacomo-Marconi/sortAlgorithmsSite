@@ -32,6 +32,12 @@ This project is a web-based application that visualizes various sorting algorith
 3. **Selection Sort**: Selects the smallest element from the unsorted part and swaps it with the first element.
 4. **Merge Sort**: A divide-and-conquer algorithm that splits the array into halves and merges sorted halves.
 5. **Quick Sort**: Selects a pivot and partitions the array into elements less than and greater than the pivot, sorting recursively.
+6. **Bucket Sort:** Distributes elements into "buckets," sorts each bucket, and combines them.
+7. **Heap Sort:** Uses a heap data structure to repeatedly extract the maximum or minimum.
+8. **Bogo Sort:** An inefficient algorithm that generates random permutations until the array is sorted.
+9. **Shell Sort:** A generalized version of Insertion Sort that sorts elements separated by a "gap."
+10. **Tim Sort:** A hybrid sorting algorithm combining Merge Sort and Insertion Sort, used in modern libraries.
+11. **Binary Sort:** Inserts elements into a binary tree and retrieves them in order.
 
 ## Customization
 - **Array Size:** The input field allows values between 3 and 250.
